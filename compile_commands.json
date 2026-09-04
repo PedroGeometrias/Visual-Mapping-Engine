@@ -1,0 +1,56 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Iinclude",
+      "-Iexternal/stb",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-g",
+      "-o",
+      "main",
+      "src/main.cpp"
+    ],
+    "directory": "/home/pedro/projects/cprojects/Visual-Mapping-Engine",
+    "file": "/home/pedro/projects/cprojects/Visual-Mapping-Engine/src/main.cpp",
+    "output": "/home/pedro/projects/cprojects/Visual-Mapping-Engine/main"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Iinclude",
+      "-Iexternal/stb",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-g",
+      "-o",
+      "main",
+      "src/image/image_processing.cpp"
+    ],
+    "directory": "/home/pedro/projects/cprojects/Visual-Mapping-Engine",
+    "file": "/home/pedro/projects/cprojects/Visual-Mapping-Engine/src/image/image_processing.cpp",
+    "output": "/home/pedro/projects/cprojects/Visual-Mapping-Engine/main"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Iinclude",
+      "-Iexternal/stb",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-g",
+      "-o",
+      "main",
+      "src/image/image_io.cpp"
+    ],
+    "directory": "/home/pedro/projects/cprojects/Visual-Mapping-Engine",
+    "file": "/home/pedro/projects/cprojects/Visual-Mapping-Engine/src/image/image_io.cpp",
+    "output": "/home/pedro/projects/cprojects/Visual-Mapping-Engine/main"
+  }
+]
