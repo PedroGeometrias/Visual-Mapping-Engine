@@ -35,3 +35,4 @@ struct Image {
         return pixels[(y * width + x) * channels + c];
     }
 };
+
