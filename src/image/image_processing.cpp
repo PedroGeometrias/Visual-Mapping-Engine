@@ -59,3 +59,39 @@ uint8_t bilinear_sample(const Image& img, double x, double y, int channel){
     // convert to uint8_t and round to the nearest integer
     return static_cast<uint8_t>(val + 0.5);
 }
+
+// we sample each pixel on the output, and see which pixel of the input corresponds to that one, we use 
+// bilenear sampling to check the value of each pixel on the input, and apply it to the output
+Image resize_bilinear(const Image&src, int new_width, int new_height){
+    // creating the new image
+    Image new_image;
+    new_image.width = new_width;
+    new_image.height= new_height;
+    new_image.channels = src.channels;
+    new_image.pixels.resize(new_width * new_height * src.channels);
+    // how many pixels of the original image we can fit per new pixel on the new destinations pixel 
+    double sx = static_cast<double>(src.width) / new_width;
+    double sy = static_cast<double>(src.height) / new_height;
+    // looping through the new image
+    for(int y = 0; y < new_height; ++y){
+        for(int x = 0; x < new_width; ++x){
+            //(x + 0.5) -> center of the new_image pixel
+            //*sx -> take the center times the scale
+            //-0.5 -> center of the pixel
+            double src_x = (x + 0.5) * sx - 0.5;
+            double src_y = (y + 0.5) * sy - 0.5;
+            for(int ch = 0; ch < src.channels; ++ch){
+                // using bilinear interpolation to scale it
+                new_image.at(x, y , ch) = bilinear_sample(src, src_x, src_y, ch);
+            }
+        }
+    }
+    return new_image;
+}
+
+// future [GREP_THIS_LATER]
+/* 
+Image resize_area(){
+            
+}
+*/

@@ -1,0 +1,13 @@
+# Build artifacts
+/build/
+/main
+*.o
+*.d
+
+# Generated compilation database
+/compile_commands.json
+
+# Temporary/debug files
+*.swp
+*.swo
+*~

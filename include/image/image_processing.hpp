@@ -4,3 +4,4 @@
 
 Image to_grayscale(const Image & src);
 uint8_t bilinear_sample(const Image& img, double x, double y, int channel);
+Image resize_bilinear(const Image&img, int new_width, int new_height);

@@ -1,35 +1,27 @@
 #include "image/image_io.hpp"
 #include "image/image_processing.hpp"
-
 #include <iostream>
 
 int main(int argc, char* argv[]) {
-    if (argc < 3) {
-        std::cerr << "usage: " << argv[0]
-                  << " <input> <output>\n";
+    if (argc < 2) {
+        std::cerr << "usage: " << argv[0] << " <input>\n";
         return 1;
     }
 
     Image img = load_image(argv[1]);
 
-    Image sampled;
-    sampled.width = img.width;
-    sampled.height = img.height;
-    sampled.channels = img.channels;
-    sampled.pixels.resize(
-        sampled.width * sampled.height * sampled.channels
-    );
+    // Test 1: identity — resize to the same size, must be byte-exact
+    Image ident = resize_bilinear(img, img.width, img.height);
+    bool ident_ok = (ident.pixels == img.pixels);
+    std::cout << "identity: " << (ident_ok ? "PASS" : "FAIL") << "\n";
 
-    for (int y = 0; y < sampled.height; ++y) {
-        for (int x = 0; x < sampled.width; ++x) {
-            for (int c = 0; c < sampled.channels; ++c) {
-                sampled.at(x, y, c) =
-                    bilinear_sample(img, x + 0.5, y + 0.5, c);
-            }
-        }
-    }
+    // Test 2: 2x downscale — should produce a visible half-size image
+    Image half = resize_bilinear(img, img.width / 2, img.height / 2);
+    save_image("output/half.png", half);
 
-    save_image(argv[2], sampled);
+    // Test 3: 2x upscale — should produce a visible double-size image
+    Image dbl = resize_bilinear(img, img.width * 2, img.height * 2);
+    save_image("output/double.png", dbl);
 
     return 0;
 }
