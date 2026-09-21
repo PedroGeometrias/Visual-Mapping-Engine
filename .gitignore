@@ -1,6 +1,5 @@
 # Build artifacts
 /build/
-/main
 *.o
 *.d
 
@@ -11,3 +10,5 @@
 *.swp
 *.swo
 *~
+/web/engine.js
+/web/engine.wasm

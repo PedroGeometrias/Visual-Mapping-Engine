@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Visual Mapping Engine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <p class="eyebrow">Visual Mapping Engine</p>
+            <h1>Panorama builder</h1>
+            <p>Drop overlapping images and let the C++ pipeline stitch them in WebAssembly.</p>
+        </header>
+
+        <section id="drop-zone" class="panel drop-zone">
+            <strong>Drop images here</strong>
+            <span>Drop two or more overlapping images anywhere inside this box.</span>
+        </section>
+
+        <section class="panel controls">
+            <button id="build" type="button" disabled>Build panorama</button>
+            <button id="download" type="button" class="secondary" disabled>Download panorama</button>
+            <button id="clear" type="button" class="secondary" disabled>Clear</button>
+        </section>
+
+        <p id="status" class="status">Loading WebAssembly…</p>
+        <ul id="file-list" class="file-list"></ul>
+
+        <section class="panel output">
+            <canvas id="panorama"></canvas>
+            <p id="empty-output">The panorama preview will appear here when it is small enough.</p>
+        </section>
+    </main>
+
+    <script src="engine.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

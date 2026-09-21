@@ -1,25 +1,24 @@
-CXX = g++
-CPPFLAGS = -Iinclude -isystem external/stb
-CXXFLAGS = -std=c++17 -Wall -Wextra -g
+EIGEN_INCLUDE ?= /usr/include/eigen3
 
-TARGET = main
-SOURCES := $(shell find src -name '*.cpp')
-STB_HEADERS = external/stb/stb_image.h external/stb/stb_image_write.h
-HEADERS = include/image/image.hpp include/image/image_io.hpp $(STB_HEADERS)
+all: wasm
 
-all: $(TARGET)
+wasm:
+	EIGEN_INCLUDE="$(EIGEN_INCLUDE)" ./scripts/build_wasm.sh
 
-setup:
-	./scripts/fetch_stb.sh
+test:
+	mkdir -p build
+	g++ -std=c++17 -Wall -Wextra -g \
+		-Iinclude -isystem "$(EIGEN_INCLUDE)" \
+		tests/geometry_test.cpp \
+		src/geometry/homography.cpp \
+		src/matching/ransac.cpp \
+		-o build/geometry_tests
+	./build/geometry_tests
 
-$(TARGET): $(SOURCES) $(HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(SOURCES) -o $(TARGET)
-
-$(STB_HEADERS):
-	@echo "Missing STB headers. Run: make setup"
-	@false
+serve:
+	python3 -m http.server 8000 --directory web
 
 clean:
-	rm -f $(TARGET)
+	rm -rf build web/engine.js web/engine.wasm
 
-.PHONY: all setup clean
+.PHONY: all wasm test serve clean

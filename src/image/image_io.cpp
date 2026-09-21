@@ -23,6 +23,35 @@ Image load_image(const std::string& filename) {
     return img;
 }
 
+Image load_image_memory(const uint8_t *data, std::size_t size) {
+    Image img;
+
+    if(!data || size == 0){
+        return img;
+    }
+
+    int w, h, comp;
+    unsigned char *pixels = stbi_load_from_memory(
+        data,
+        static_cast<int>(size),
+        &w,
+        &h,
+        &comp,
+        3
+    );
+
+    if(!pixels){
+        return img;
+    }
+
+    img.width = w;
+    img.height = h;
+    img.channels = 3;
+    img.pixels.assign(pixels, pixels + w * h * 3);
+    stbi_image_free(pixels);
+    return img;
+}
+
 bool save_image(const std::string& filename, const Image& img) {
     if (img.channels == 1) {
         return stbi_write_png(filename.c_str(), img.width, img.height, 1, img.pixels.data(), img.width) != 0;

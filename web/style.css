@@ -1,0 +1,149 @@
+:root{
+    color-scheme: dark;
+    font-family: system-ui, sans-serif;
+    background: #111318;
+    color: #f2f3f5;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    min-height: 100vh;
+}
+
+main{
+    width: min(1100px, calc(100% - 32px));
+    margin: 64px auto;
+}
+
+header{
+    margin-bottom: 28px;
+}
+
+h1{
+    margin: 4px 0 8px;
+    font-size: clamp(2rem, 5vw, 4rem);
+}
+
+header p{
+    max-width: 700px;
+    color: #aeb4c0;
+}
+
+.eyebrow{
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.panel{
+    border: 1px solid #2a2e36;
+    border-radius: 12px;
+    background: #181b21;
+}
+
+.drop-zone{
+    min-height: 150px;
+    padding: 28px;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 7px;
+    border-style: dashed;
+    text-align: center;
+    transition: border-color 120ms ease, background 120ms ease;
+}
+
+.drop-zone strong{
+    font-size: 1.1rem;
+}
+
+.drop-zone span{
+    color: #8e96a4;
+    font-size: 0.9rem;
+}
+
+.drop-zone.dragging{
+    border-color: #f2f3f5;
+    background: #20242b;
+}
+
+.controls{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+    padding: 16px;
+}
+
+button{
+    border: 1px solid #3a404a;
+    border-radius: 8px;
+    padding: 10px 14px;
+    background: #f2f3f5;
+    color: #111318;
+    font: inherit;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+button.secondary{
+    background: transparent;
+    color: #f2f3f5;
+}
+
+button:disabled{
+    opacity: 0.4;
+    cursor: default;
+}
+
+.status{
+    min-height: 24px;
+    color: #aeb4c0;
+}
+
+.status.error{
+    color: #ff9d9d;
+}
+
+.file-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    list-style: none;
+}
+
+.file-list li{
+    padding: 6px 9px;
+    border-radius: 6px;
+    background: #22262e;
+    color: #c8cdd6;
+    font-size: 0.9rem;
+}
+
+.output{
+    position: relative;
+    min-height: 320px;
+    margin-top: 20px;
+    padding: 18px;
+    display: grid;
+    place-items: center;
+    overflow: auto;
+}
+
+canvas{
+    display: none;
+    max-width: 100%;
+    height: auto;
+}
+
+#empty-output{
+    color: #777f8d;
+    text-align: center;
+}

@@ -1,2 +1,2 @@
 CompileFlags:
-  Add: [-Iinclude, -Iexternal/stb]
+  Add: [-Iinclude, -Iexternal/stb, -I/usr/include/eigen3]
