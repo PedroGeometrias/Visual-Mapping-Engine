@@ -1,8 +1,8 @@
-:root{
-    color-scheme: dark;
-    font-family: system-ui, sans-serif;
-    background: #111318;
-    color: #f2f3f5;
+:root {
+    --background: #141010;
+    --panel: #211e1e;
+    --drop_here: #111;
+    --text: #999999;
 }
 
 *{
@@ -12,6 +12,8 @@
 body{
     margin: 0;
     min-height: 100vh;
+    background: var(--background);
+    color: var(--text);
 }
 
 main{
@@ -35,7 +37,7 @@ header p{
 
 .eyebrow{
     margin: 0;
-    font-size: 0.8rem;
+    font-size: 1.8rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -43,7 +45,6 @@ header p{
 
 .panel{
     border: 1px solid #2a2e36;
-    border-radius: 12px;
     background: #181b21;
 }
 
@@ -57,6 +58,8 @@ header p{
     border-style: dashed;
     text-align: center;
     transition: border-color 120ms ease, background 120ms ease;
+    color: var(--text);
+    background: #181b21;
 }
 
 .drop-zone strong{
@@ -83,7 +86,6 @@ header p{
 
 button{
     border: 1px solid #3a404a;
-    border-radius: 8px;
     padding: 10px 14px;
     background: #f2f3f5;
     color: #111318;
@@ -121,7 +123,6 @@ button:disabled{
 
 .file-list li{
     padding: 6px 9px;
-    border-radius: 6px;
     background: #22262e;
     color: #c8cdd6;
     font-size: 0.9rem;
